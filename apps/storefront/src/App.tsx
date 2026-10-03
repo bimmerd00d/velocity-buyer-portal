@@ -35,7 +35,8 @@ import {
   useAppSelector,
 } from './store';
 
-const FONT_URL = 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap';
+const FONT_URL =
+  'https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap';
 
 export default function App() {
   const showPageMask = usePageMask();
@@ -97,8 +98,17 @@ export default function App() {
   const CUSTOM_STYLES = `
   body {
     background: ${backgroundColor};
-    font-family: Roboto;
-  }`;
+    font-family: Barlow, Arial, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 { font-family: 'Barlow Condensed', Arial, sans-serif; color: #14212b; }
+  h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #176573; outline-offset: 3px; }
+  img[src*="velocity-dealer.svg"] { background: #14212b; padding: 18px 25px; border-radius: 4px; box-sizing: content-box; }
+  .MuiButton-root { text-transform: none; box-shadow: none; font-weight: 600; min-height: 42px; }
+  .MuiTableHead-root { background: #e6edef; }
+  .MuiPaper-root { border-color: #d6dee2; }
+  @media (max-width: 600px) { h1 { font-size: 34px; } }
+  `;
 
   const [customStyles, setCustomStyle] = useState<string>(CUSTOM_STYLES);
 

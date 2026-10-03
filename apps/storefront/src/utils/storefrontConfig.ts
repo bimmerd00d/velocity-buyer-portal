@@ -160,8 +160,6 @@ const getStoreConfigs = async (dispatch: any, dispatchGlobal: any) => {
   const keys = storefrontKeys.map((item: StorefrontKeysProps) => item.key);
   const { storefrontConfigs } = await getStorefrontConfigs(channelId, keys);
 
-  let logo = '';
-
   const obj: Partial<CustomStyleButtonState> | {} = {};
   let blockPendingAccountOrderCreation = true;
   let blockPendingAccountViewPrice = true;
@@ -172,9 +170,6 @@ const getStoreConfigs = async (dispatch: any, dispatchGlobal: any) => {
     );
     const storefrontConfig = item;
     if (!isEmpty(storefrontKey)) {
-      if (storefrontKey.key === 'quote_logo') {
-        logo = item.value;
-      }
       if (storefrontKey.key === 'quote_on_product_page') {
         storefrontConfig.extraFields = {
           ...item.extraFields,
@@ -323,7 +318,7 @@ const getStoreConfigs = async (dispatch: any, dispatchGlobal: any) => {
   dispatchGlobal({
     type: 'common',
     payload: {
-      logo,
+      logo: new URL('velocity-dealer.svg', import.meta.env.VITE_ASSETS_ABSOLUTE_PATH).href,
       isLogoLoaded: true,
       quoteConfig: storefrontConfigs,
       blockPendingAccountOrderCreation,
@@ -334,6 +329,25 @@ const getStoreConfigs = async (dispatch: any, dispatchGlobal: any) => {
     type: 'merge',
     payload: {
       ...obj,
+      portalStyle: { primaryColor: '#176573', backgroundColor: '#F3F5F5' },
+      loginPageButton: {
+        ...(obj as Partial<CustomStyleButtonState>).loginPageButton,
+        primaryButtonColor: '#176573',
+        signInButtonText: 'Sign in',
+        createAccountButtonText: 'Request dealer access',
+      },
+      loginPageDisplay: {
+        ...(obj as Partial<CustomStyleButtonState>).loginPageDisplay,
+        displayStoreLogo: true,
+      },
+      loginPageHtml: {
+        ...(obj as Partial<CustomStyleButtonState>).loginPageHtml,
+        topHtmlRegionEnabled: true,
+        topHtmlRegionHtml:
+          '<h1>Your next job starts here.</h1><p>Sign in for your company’s pricing, shopping lists and quotes.</p>',
+        createAccountPanelHtml:
+          '<h2>The business behind the build.</h2><p>Bring your parts, projects and paperwork together with Velocity Dealer.</p><ul><li>Shop across the Velocity catalog</li><li>Organize parts into shopping lists</li><li>Manage quotes and company purchases</li></ul>',
+      },
     },
   });
 };

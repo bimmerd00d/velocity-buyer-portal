@@ -40,7 +40,7 @@ function B3ThemeProvider({ children }: Props) {
         shape: { borderRadius: 6 },
         typography: {
           fontFamily: '"Barlow", "Arial", sans-serif',
-          button: { fontWeight: 700, textTransform: "none" },
+          button: { fontWeight: 700, textTransform: 'none' },
         },
         palette: {
           background: {
