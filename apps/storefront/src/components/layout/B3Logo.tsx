@@ -47,11 +47,12 @@ export default function B3Logo() {
       {isLogoLoaded && logo && (
         <ImageListItem
           sx={{
-            maxWidth: '200px',
+            width: isMobile ? '140px' : '200px',
+            maxWidth: '100%',
             cursor: 'pointer',
             '& .MuiImageListItem-img': {
               objectFit: 'contain',
-              width: 'auto',
+              width: '100%',
             },
           }}
           onClick={() => {
