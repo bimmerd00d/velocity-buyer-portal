@@ -78,10 +78,10 @@ export const defaultCreateAccountPanel = `<div class="panel">
 `;
 
 export const initState = {
-  globalButtonBackgroundColor: '#3385D6',
+  globalButtonBackgroundColor: '#176573',
   portalStyle: {
-    primaryColor: '#3385D6',
-    backgroundColor: '#FEF9F5',
+    primaryColor: '#176573',
+    backgroundColor: '#F3F5F5',
   },
   masqueradeButton: {
     color: '#FFFFFF',

@@ -37,12 +37,17 @@ function B3ThemeProvider({ children }: Props) {
   const theme = (lang: string) =>
     createTheme(
       {
+        shape: { borderRadius: 6 },
+        typography: {
+          fontFamily: '"Barlow", "Arial", sans-serif',
+          button: { fontWeight: 700, textTransform: "none" },
+        },
         palette: {
           background: {
-            default: backgroundColor,
+            default: backgroundColor || '#F3F5F5',
           },
           primary: {
-            main: primaryColor || '#1976d2',
+            main: primaryColor || '#176573',
           },
         },
       },
