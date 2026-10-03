@@ -62,6 +62,7 @@ export default function B3AccountInfo({ closeSidebar }: B3AccountInfoProps) {
 
   return (
     <Box
+      className="dealer-account-user"
       sx={{
         display: 'flex',
         justifyContent: isMobile ? 'start' : 'end',

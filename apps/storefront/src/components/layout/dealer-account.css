@@ -44,3 +44,5 @@
 .dealer-company-identity .dealer-company-name { font-weight:600; color:#18242e; }
 .dealer-account-mobile .dealer-company-identity { display:flex; align-items:center; gap:14px; max-width:none; padding:10px 14px; }
 .dealer-account-mobile .dealer-company-identity img { width:150px; height:46px; }
+
+.dealer-account-header-content .dealer-account-user { color:#fff; }
