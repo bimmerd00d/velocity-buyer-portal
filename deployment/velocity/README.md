@@ -1,49 +1,42 @@
-# Velocity Dealer Buyer Portal
+# Velocity Dealer — deployed October 3, 2026
 
-This fork serves the open-source Buyer Portal inside the existing BigCommerce Stencil storefront. It does not require Catalyst or move checkout to Vercel.
+Live: https://dealers.velocity-stack.net/
 
-## Ownership and hosting
+The approved dealer design is live on channel 1 with the customized open-source Buyer Portal. BigCommerce serves Stencil, catalog, pricing, sessions and checkout. Vercel serves the portal assets. No Catalyst or DNS changes were needed.
 
-- GitHub: bimmerd00d/velocity-buyer-portal
-- Vercel team: bimmerd00ds-projects
-- Vercel project: velocity-buyer-portal
-- Asset origin: https://velocity-buyer-portal.vercel.app/
-- BigCommerce dealer channel: 1; store hash: kl9eidhjei
-- Storefront: https://dealers.velocity-stack.net/
-- Initial upstream revision: e64fba78fe2816c3ae38f3dc047f85d83cc14f03
+## Source and ownership
 
-Run commands from apps/storefront. Node >=22.16 and Corepack Yarn 1.22.22 are required. Install with `corepack yarn install --frozen-lockfile`, then `corepack yarn build`.
+- Stencil working tree: `/Users/brandon.holloway/.codex/worktrees/velocity-dealer/velocity`, branch `codex/dealer-portal`.
+- Settings: `storefront/theme-configs/dealer.settings.json` in that tree.
+- Portal: `/Users/brandon.holloway/Projects/velocity-buyer-portal`, https://github.com/bimmerd00d/velocity-buyer-portal.
+- Vercel: `velocity-buyer-portal` under `bimmerd00ds-projects`.
+- Assets: https://velocity-buyer-portal.vercel.app/.
+- Static design exploration remains in `marketing/dealer-portal/public`; its demo parts list is not production functionality.
 
-Production build variables (public configuration, never credentials):
+## Live configuration
 
-```
-VITE_IS_LOCAL_ENVIRONMENT=FALSE
-VITE_DISABLE_BUILD_HASH=TRUE
-VITE_ASSETS_ABSOLUTE_PATH=https://velocity-buyer-portal.vercel.app/
-```
+- Theme: Velocity Dealer — Trade Desk, UUID `efc1a460-a188-013f-e6c0-5e53173c381a`.
+- Variation: `f0987fa0-a188-013f-e6c0-5e53173c381a`.
+- Active configuration: `fd862430-a188-013f-0a03-6654d1f26f17` (370 settings verified).
+- B2B Storefronts → Velocity Group → Buyer portal → Type: Custom, Use global unchecked. Other B2B options retain existing values.
+- Channel-scoped footer loader: Script Manager UUID `eae572a2-6f94-408b-b791-6fdcc420c929`, `/dealer-loader.js` on Vercel.
+- Selecting Custom removes native app modules automatically. The loader also checks against duplicate mounting.
+- Old Cart Entries Widget and Product Entries Badge retain their complete source in Script Manager, but their opening script tag uses `type="text/plain" data-disabled="dealer-redesign-2026-10-03"` so they no longer execute.
 
-The trailing slash is required. Production API endpoints come from upstream defaults. Do not copy the internal bcdev API endpoint in the upstream example. Never add management API tokens to VITE variables or browser code.
+## Validation
 
-## Integration status and next validation
+Production build and lint passed; 54 login/logout/shopping-list tests passed. Real dealer login and account navigation work without captured browser errors. Desktop and mobile layouts inspected. Dealer price $399.20 for the $499 Kenwood product persisted through cart and BigCommerce checkout. Test cart restored to empty; no order, payment or address submitted. All six other channels retain their exact previous active theme/configuration/version identifiers.
 
-The hosted build is an asset deployment, not a standalone storefront. No dealer-channel scripts or Buyer Portal settings have been switched. The existing Stencil theme and native Buyer Portal remain active.
+The account shows empty order/quote/list states. Existing seed list 1050378 has no channel association and belongs to another company user; seeded quotes remain In Process. Existing record visibility has not been changed. Full quote submission, list lifecycle, company switching and payment completion are not certified by these checks.
 
-Before activation:
+## Rollback
 
-1. Back up channel 1 Header/Footer scripts and its Buyer Portal configuration.
-2. Load the custom module in an isolated Stencil preview, replacing the native module only in that preview. Avoid mounting both portal builds.
-3. Validate buyer login/logout, account navigation, company switching/roles, shopping lists, quote flow, dealer pricing, cart and BigCommerce checkout. Use existing demo accounts and avoid submitting orders or payments.
-4. Review the actual portal branding on desktop and mobile. The current changes establish typography, shapes and default palette; remotely configured portal colors can override defaults.
-5. For channel 1 only, choose the Custom Buyer Portal type and install the reviewed loader following upstream docs/stencil.md. Keep other channels unchanged.
-6. Verify module/CSS requests are public (no Vercel deployment protection challenge) and CORS headers are present.
-7. Roll back by restoring the backed-up channel configuration and native scripts.
+Backups: `snapshots/dealer-before-2026-10-03/` in the main project.
 
-Do not change dealer DNS. Vercel serves public JavaScript/CSS; browser sessions and commerce continue on the dealer storefront. Stable index.js must revalidate; hashed chunks may cache indefinitely. Retain old deployments for rollback. A future release should pin its asset base to an immutable public deployment and update the store loader together, avoiding mixed-version imports.
+Restore previous Elevate theme `c161c760-e5de-013b-509c-32be06899b7d`, configuration `780aba30-018c-013c-a067-42edc270f7d4`, version `c20daa80-e5de-013b-509c-32be06899b7d` on channel 1 only. Restore Buyer portal Type to Use global / Default; native scripts return and the guarded custom loader skips mounting. Disable the custom Script Manager entry when retiring it. To restore giveaway widgets, change their opening tags back to `<script>`.
 
-## Branding
+## Releasing portal changes
 
-Graphite, paper and deep teal defaults align with the approved Velocity Dealer direction. The supplied editable logo is in apps/storefront/public/velocity-dealer.svg. Barlow typography falls back to Arial until loaded by the host Stencil theme. Full dashboard layout customization remains a separate integration step.
+Build locally with the production public environment variables before publishing. Regenerate the index.js SHA-384 in public/dealer-loader.js. Add the new loader SHA-384 alongside the previous one in the BigCommerce script integrity_hashes before deploying; otherwise the browser blocks the release. Push to main to trigger Vercel, then verify remote loader and index hashes match. Keep the previous deployment and integrity hash for rollback. Never put management credentials in VITE variables.
 
-## Maintenance
-
-Keep upstream as the BigCommerce remote. Review and test upstream security and feature updates before merging. This fork does not receive hosted Buyer Portal updates automatically.
+The fork needs reviewed upstream updates; it no longer receives BigCommerce hosted-portal changes automatically.

@@ -103,7 +103,7 @@ export default function App() {
   h1, h2, h3, h4, h5, h6 { font-family: 'Barlow Condensed', Arial, sans-serif; color: #14212b; }
   h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
   a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #176573; outline-offset: 3px; }
-  img[src*="velocity-dealer.svg"] { background: #14212b; padding: 18px 25px; border-radius: 4px; box-sizing: border-box; object-fit: contain; height: auto; width: 100%; }
+  img[src*="velocity-dealer.svg"] { background: #14212b; padding: 6px 12px; border-radius: 4px; box-sizing: border-box; object-fit: contain; height: auto; width: 100%; }
   .MuiButton-root { text-transform: none; box-shadow: none; font-weight: 600; min-height: 42px; }
   .MuiTableHead-root { background: #e6edef; }
   .MuiPaper-root { border-color: #d6dee2; }
