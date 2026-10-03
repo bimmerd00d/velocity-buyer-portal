@@ -193,6 +193,7 @@ export default function B3Nav({ closeSidebar }: B3NavProps) {
 
   return (
     <List
+      className="dealer-account-nav"
       sx={{
         width: '100%',
         maxWidth: 360,

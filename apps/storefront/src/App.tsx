@@ -4,6 +4,7 @@ import { HashRouter } from 'react-router-dom';
 import B3GlobalTip from '@/components/B3GlobalTip';
 import GlobalDialog from '@/components/extraTip/GlobalDialog';
 import B3RenderRouter from '@/components/layout/B3RenderRouter';
+import dealerAccountStyles from '@/components/layout/dealer-account.css?raw';
 import { usePageMask } from '@/components/loading';
 import B3CompanyHierarchyExternalButton from '@/components/outSideComponents/B3CompanyHierarchyExternalButton';
 import B3HoverButton from '@/components/outSideComponents/B3HoverButton';
@@ -108,6 +109,7 @@ export default function App() {
   .MuiTableHead-root { background: #e6edef; }
   .MuiPaper-root { border-color: #d6dee2; }
   @media (max-width: 600px) { h1 { font-size: 34px; } }
+  ${dealerAccountStyles}
   `;
 
   const [customStyles, setCustomStyle] = useState<string>(CUSTOM_STYLES);

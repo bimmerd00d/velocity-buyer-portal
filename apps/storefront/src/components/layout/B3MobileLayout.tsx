@@ -13,6 +13,7 @@ import B3AccountInfo from './B3AccountInfo';
 import B3CloseAppButton from './B3CloseAppButton';
 import B3Logo from './B3Logo';
 import B3Nav from './B3Nav';
+import CompanyIdentity from './CompanyIdentity';
 
 export default function B3MobileLayout({
   children,
@@ -43,6 +44,7 @@ export default function B3MobileLayout({
 
   return (
     <Box
+      className="dealer-account dealer-account-mobile"
       sx={{
         height: '70vh',
         p: '4vw',
@@ -51,6 +53,7 @@ export default function B3MobileLayout({
       }}
     >
       <Box
+        className="dealer-account-mobile-header"
         sx={{
           display: 'flex',
           flexDirection: 'row',
@@ -113,6 +116,7 @@ export default function B3MobileLayout({
       </Box>
 
       <Box
+        className="dealer-account-title"
         component="h1"
         sx={{
           p: 0,
@@ -125,6 +129,7 @@ export default function B3MobileLayout({
       >
         {title}
       </Box>
+      <CompanyIdentity />
       <CompanyCredit />
       <Box
         sx={{
@@ -137,6 +142,7 @@ export default function B3MobileLayout({
       </Box>
       {isOpenMobileSidebar && (
         <Box
+          className="dealer-account-mobile-drawer"
           sx={{
             height: '100vh',
             position: 'fixed',

@@ -6,6 +6,7 @@ import trim from 'lodash-es/trim';
 
 import { B3CustomForm } from '@/components/B3CustomForm';
 import CustomButton from '@/components/button/CustomButton';
+import CompanyIdentity from '@/components/layout/CompanyIdentity';
 import { b3HexToRgb, getContrastColor } from '@/components/outSideComponents/utils/b3CustomStyles';
 import B3Spin from '@/components/spin/B3Spin';
 import { useFeatureFlag } from '@/hooks/useFeatureFlag';
@@ -355,6 +356,7 @@ function AccountSetting() {
     <B3Spin isSpinning={isLoading} background={backgroundColor}>
       <Box>
         {isDisplayUpgradeBanner && <UpgradeBanner />}
+        <CompanyIdentity />
         <Box
           sx={{
             width: isMobile ? '100%' : '35%',

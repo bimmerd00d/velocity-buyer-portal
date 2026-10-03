@@ -1,6 +1,6 @@
 import { ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Box, useMediaQuery } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { useMobile } from '@/hooks/useMobile';
 import { useB3Lang } from '@/lib/lang';
@@ -16,6 +16,7 @@ import B3Logo from './B3Logo';
 import B3MainHeader from './B3MainHeader';
 import B3MobileLayout from './B3MobileLayout';
 import B3Nav from './B3Nav';
+import CompanyIdentity from './CompanyIdentity';
 
 const SPECIAL_PATH_TEXTS = {
   '/purchased-products': 'global.purchasedProducts.title',
@@ -25,7 +26,6 @@ const SPECIAL_PATH_TEXTS = {
 
 export default function B3Layout({ children }: { children: ReactNode }) {
   const [isMobile] = useMobile();
-  const isDesktopLimit = useMediaQuery('(min-width:1775px)');
 
   const location = useLocation();
 
@@ -105,58 +105,32 @@ export default function B3Layout({ children }: { children: ReactNode }) {
       {isMobile ? (
         <B3MobileLayout title={title}>{children}</B3MobileLayout>
       ) : (
-        <Box
-          id="app-mainPage-layout"
-          sx={{
-            display: 'flex',
-            minHeight: '100vh',
-            margin: 'auto',
-            width: !isDesktopLimit ? '100%' : 1775,
-            minWidth: !isDesktopLimit ? '100%' : 1775,
-            maxWidth: !isDesktopLimit ? '100%' : 1775,
-            flexDirection: 'row',
-            p: '32px 63px 70px 63px',
-          }}
-        >
-          <B3CloseAppButton />
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              width: '200px',
-              displayPrint: 'none',
-            }}
-          >
-            <B3Logo />
-            <Box
-              sx={{
-                pt: '24px',
-              }}
-            >
-              <B3Nav />
+        <Box id="app-mainPage-layout" className="dealer-account">
+          <Box component="header" className="dealer-account-header">
+            <Box className="dealer-account-masthead">
+              <B3Logo />
+              <Box className="dealer-account-tools">
+                <B3MainHeader title="" />
+              </Box>
+              <B3CloseAppButton />
             </Box>
           </Box>
-
-          <Box
-            sx={{
-              flex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              maxWidth: '1450px',
-              width: '100%',
-              p: '0 0px 0px 50px',
-              ...overflowStyle,
-            }}
-          >
-            <B3MainHeader title={title} />
-            <CompanyCredit />
-            <Box
-              component="main"
-              sx={{
-                mt: !isMobile && !title ? '24px' : '0',
-              }}
-            >
-              {children}
+          <Box className="dealer-account-body">
+            <Box component="aside" className="dealer-account-sidebar" sx={{ displayPrint: 'none' }}>
+              <Box component="p" className="dealer-account-eyebrow">
+                Dealer workspace
+              </Box>
+              <CompanyIdentity />
+              <B3Nav />
+            </Box>
+            <Box className="dealer-account-content" sx={{ ...overflowStyle }}>
+              {title && (
+                <Box component="h1" className="dealer-account-title">
+                  {title}
+                </Box>
+              )}
+              <CompanyCredit />
+              <Box component="main">{children}</Box>
             </Box>
           </Box>
         </Box>

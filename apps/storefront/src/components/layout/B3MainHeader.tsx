@@ -60,7 +60,7 @@ export default function MainHeader({ title }: { title: string }) {
   }, []);
 
   return (
-    <Box>
+    <Box className="dealer-account-header-content">
       <Box
         sx={{
           display: 'flex',
