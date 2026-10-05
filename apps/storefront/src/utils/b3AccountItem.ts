@@ -104,11 +104,21 @@ const openPageByClick = ({
   isAgenting,
   authorizedPages,
 }: OpenPageByClickProps) => {
+  if (Number(currentRole) !== CustomerRole.GUEST) {
+    // Explicit account destinations take precedence over the default landing page.
+    const portalPath = href?.split('#')[1];
+    if (portalPath?.startsWith('/')) return portalPath;
+    if (href === '/account-overview') return href;
+    if (href?.includes('/account.php')) {
+      return redirectBcMenus(href, Number(currentRole), isAgenting, authorizedPages);
+    }
+  }
+
   if (href?.includes('register')) {
     return '/register';
   }
   if (href?.includes('/orders')) {
-    return currentRole !== CustomerRole.GUEST ? authorizedPages : '/login';
+    return Number(currentRole) !== CustomerRole.GUEST ? '/orders' : '/login';
   }
 
   if (

@@ -174,9 +174,6 @@ const gotoAllowedAppPage = async (
     const currentAuthorizedPages = isB2BUser ? b2bJumpPath(Number(role)) : '/orders';
 
     switch (Number(role)) {
-      case CustomerRole.JUNIOR_BUYER:
-        url = '/shoppingLists';
-        break;
       case CustomerRole.SUPER_ADMIN:
         url = '/dashboard';
         break;

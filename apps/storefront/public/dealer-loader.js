@@ -7,7 +7,7 @@
     document.getElementById('velocity-buyer-portal')
   )
     return;
-  window.b3CheckoutConfig = { routes: { dashboard: '/account.php?action=order_status' } };
+  window.b3CheckoutConfig = { routes: { dashboard: '/account.php' } };
   window.B3 = {
     setting: {
       store_hash: 'kl9eidhjei',
@@ -19,7 +19,7 @@
     'dom.registerElement':
       '[href^="/login.php"], [href^="/account.php"], #checkout-customer-login, #checkout-customer-returning .form-legend-container [href="#"]',
     'dom.openB3Checkout': 'checkout-customer-continue',
-    before_login_goto_page: '/account.php?action=order_status',
+    before_login_goto_page: '/account.php',
     checkout_super_clear_session: 'true',
     'dom.navUserLoginElement': '.account, .navUser-item.navUser-item--account',
   };
@@ -27,7 +27,7 @@
   script.id = 'velocity-buyer-portal';
   script.type = 'module';
   script.crossOrigin = 'anonymous';
-  script.integrity = 'sha384-c/F4Ubtiqsonyk7Pmdrkq4RjwQisF5ZuwyKhuPwf+wsww4KBQMhj1L5MpkqNuCqx';
+  script.integrity = 'sha384-vAbO6dVfsyGVMOSvCR9iubXEB1L/D5gt10bSGi1jAcXFFHVvzstBxMwpvLuAgL+4';
   script.src = 'https://velocity-buyer-portal.vercel.app/index.js';
   document.body.append(script);
 })();

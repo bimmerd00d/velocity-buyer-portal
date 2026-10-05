@@ -55,7 +55,7 @@ describe('LoginPage', () => {
   });
 
   describe('successful login and redirects', () => {
-    it('should redirect junior buyer to /shoppingLists after successful login', async () => {
+    it('should redirect junior buyer to /account-overview after successful login', async () => {
       vi.mock('@/hooks/useB2BCallback');
 
       server.use(
@@ -91,7 +91,7 @@ describe('LoginPage', () => {
       });
 
       await waitFor(() => {
-        expect(navigation).toHaveBeenCalledWith(expect.stringContaining('/shoppingLists'));
+        expect(navigation).toHaveBeenCalledWith(expect.stringContaining('/account-overview'));
       });
     });
 
@@ -355,7 +355,7 @@ describe('LoginPage', () => {
       const { navigation } = await renderBcFirstLoginAndSubmit();
 
       expect(await screen.findByText(ACCOUNT_INCORRECT_MESSAGE)).toBeInTheDocument();
-      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/shoppingLists'));
+      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/account-overview'));
     });
 
     it('shows the incorrect-account error when the customer JWT cannot be retrieved', async () => {
@@ -375,7 +375,7 @@ describe('LoginPage', () => {
       const { navigation } = await renderBcFirstLoginAndSubmit();
 
       expect(await screen.findByText(ACCOUNT_INCORRECT_MESSAGE)).toBeInTheDocument();
-      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/shoppingLists'));
+      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/account-overview'));
     });
 
     it('shows the incorrect-account error when the B2B token exchange fails generically', async () => {
@@ -400,7 +400,7 @@ describe('LoginPage', () => {
       await waitFor(() => {
         expect(snackbar.error).toHaveBeenCalledWith(ACCOUNT_INCORRECT_MESSAGE);
       });
-      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/shoppingLists'));
+      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/account-overview'));
     });
 
     it('shows the company-status error and logs out when the token exchange returns a company error', async () => {
@@ -435,7 +435,7 @@ describe('LoginPage', () => {
       await waitFor(() => {
         expect(logoutMock).toHaveBeenCalledWith({ showLogoutBanner: false });
       });
-      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/shoppingLists'));
+      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/account-overview'));
     });
 
     it('shows the pending-approval ordering message once and logs out when the token exchange returns that company error', async () => {
@@ -468,7 +468,7 @@ describe('LoginPage', () => {
       await waitFor(() => {
         expect(logoutMock).toHaveBeenCalledWith({ showLogoutBanner: false });
       });
-      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/shoppingLists'));
+      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/account-overview'));
     });
 
     it('shows the prelaunch error when the token exchange reports the channel is not live', async () => {
@@ -494,7 +494,7 @@ describe('LoginPage', () => {
       const { navigation } = await renderBcFirstLoginAndSubmit();
 
       expect(await screen.findByText(prelaunchTip)).toBeInTheDocument();
-      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/shoppingLists'));
+      expect(navigation).not.toHaveBeenCalledWith(expect.stringContaining('/account-overview'));
     });
 
     it('exchanges the customer JWT for a B2B token, stores both, and navigates on success', async () => {
@@ -523,7 +523,7 @@ describe('LoginPage', () => {
       const { navigation, store } = await renderBcFirstLoginAndSubmit();
 
       await waitFor(() => {
-        expect(navigation).toHaveBeenCalledWith(expect.stringContaining('/shoppingLists'));
+        expect(navigation).toHaveBeenCalledWith(expect.stringContaining('/account-overview'));
       });
 
       expect(store.getState().company.tokens.B2BToken).toBe('b2b-token');

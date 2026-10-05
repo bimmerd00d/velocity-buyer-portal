@@ -62,7 +62,7 @@ export default function DealerOverview() {
       </p>
       <section className="dealer-overview-banner">
         <div>
-          <h2>Keep the next job moving.</h2>
+          <h2>Purchasing activity</h2>
           <p>Your purchasing activity, company credit, and dealer tools in one place.</p>
         </div>
         {allowed.includes('/shoppingLists') && (

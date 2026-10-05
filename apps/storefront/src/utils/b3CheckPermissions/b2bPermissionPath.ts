@@ -13,8 +13,15 @@ export const b2bJumpPath = (role: number): string => {
     return PATH_ROUTES.DASHBOARD;
   }
 
-  if (role === CustomerRole.JUNIOR_BUYER) {
-    return PATH_ROUTES.SHOPPING_LISTS;
+  if (
+    [
+      CustomerRole.ADMIN,
+      CustomerRole.SENIOR_BUYER,
+      CustomerRole.JUNIOR_BUYER,
+      CustomerRole.CUSTOM_ROLE,
+    ].includes(role)
+  ) {
+    return '/account-overview';
   }
 
   if (hasPermission('getOrderPermission')) {
