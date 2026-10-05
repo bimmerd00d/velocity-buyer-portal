@@ -1,0 +1,20 @@
+.dealer-storefront-welcome{width:100%;min-width:0;margin-bottom:24px}
+.dealer-welcome-panel{display:grid;grid-template-columns:200px minmax(0,1fr);align-items:center;gap:36px;padding:32px;background:#14212b;border:1px solid #395663;border-top:3px solid #83dce5;border-radius:6px;color:#fff}
+.dealer-welcome-logo{min-width:0;padding:22px 18px;background:#fff;border:1px solid #bfd0d7;border-radius:5px;text-align:center}
+.dealer-welcome-logo .dealer-company-identity{margin:0;padding:0;border:0;background:none}
+.dealer-welcome-logo img{width:100%;height:82px;object-fit:contain}
+.dealer-welcome-logo .dealer-company-name{font:600 22px/1.2 'Barlow Condensed',Arial,sans-serif;color:#14212b;overflow-wrap:anywhere}
+.dealer-welcome-logo .dealer-company-caption{margin:18px 0 0;padding-top:14px;border-top:1px solid #e2eaed;font:500 12px/1.4 Barlow,Arial,sans-serif;color:#526773;overflow-wrap:anywhere}
+.dealer-welcome-copy{min-width:0}
+.dealer-welcome-panel .dealer-welcome-label{margin:0 0 10px;color:#83dce5;font:600 13px/1.4 Barlow,Arial,sans-serif}
+.dealer-home .dealer-welcome-panel h1{margin:0 0 12px;color:#fff;font:600 clamp(34px,3.6vw,52px)/1.08 'Barlow Condensed',Arial,sans-serif;overflow-wrap:anywhere}
+.dealer-welcome-panel .dealer-welcome-description{margin:0;color:#d1dfe5;font:400 16px/1.5 Barlow,Arial,sans-serif}
+.dealer-welcome-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;margin-top:24px;padding-top:20px;border-top:1px solid #39515e}
+.dealer-welcome-user{display:flex;align-items:center;gap:10px;font:400 13px/1.4 Barlow,Arial,sans-serif;color:#d1dfe5}
+.dealer-welcome-user strong{color:#fff;font-weight:600}
+.dealer-welcome-initials{display:grid;place-items:center;flex:0 0 34px;height:34px;border:1px solid #83dce5;border-radius:4px;background:#223c48;color:#b1eff3;font-weight:600}
+.dealer-welcome-invoices{display:inline-flex;align-items:center;min-height:44px;padding:9px 16px;border:1px solid #789fae;border-radius:4px;color:#fff;font:600 14px/1.3 Barlow,Arial,sans-serif}
+.dealer-welcome-invoices:hover{background:#274350;border-color:#83dce5;color:#fff}
+.dealer-welcome-invoices:focus-visible{outline:3px solid #83dce5;outline-offset:4px}
+@media(max-width:700px){.dealer-welcome-panel{grid-template-columns:140px minmax(0,1fr);gap:22px;padding:24px}.dealer-welcome-logo{padding:18px 12px}.dealer-welcome-logo img{height:64px}.dealer-welcome-bottom{align-items:flex-start}.dealer-welcome-user>span:last-child{max-width:170px}}
+@media(max-width:500px){.dealer-welcome-panel{grid-template-columns:1fr;gap:22px;padding:24px 20px}.dealer-welcome-logo{width:170px}.dealer-welcome-logo .dealer-company-caption{margin-top:12px;padding-top:10px}.dealer-welcome-panel .dealer-welcome-description{font-size:15px}.dealer-welcome-bottom{gap:16px}.dealer-welcome-invoices{width:100%;justify-content:center}.dealer-welcome-user>span:last-child{max-width:none}}

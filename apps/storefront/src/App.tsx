@@ -2,6 +2,7 @@ import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { HashRouter } from 'react-router-dom';
 
 import B3GlobalTip from '@/components/B3GlobalTip';
+import DealerStorefrontWelcome from '@/components/DealerStorefrontWelcome';
 import GlobalDialog from '@/components/extraTip/GlobalDialog';
 import B3RenderRouter from '@/components/layout/B3RenderRouter';
 import dealerAccountStyles from '@/components/layout/dealer-account.css?raw';
@@ -61,6 +62,7 @@ export default function App() {
   const isDefaultLoginStyling = useRef(shouldUseDefaultLoginStyling()).current;
   const initializedCustomerId = useRef<number | string | null>(null);
   const isInitializing = useRef(false);
+  const [storefrontIdentityReady, setStorefrontIdentityReady] = useState(false);
   const currentClickedUrl = useAppSelector(({ global }) => global.currentClickedUrl);
   const isRegisterAndLogin = useAppSelector(({ global }) => global.isRegisterAndLogin);
   const { quotesCreateActionsPermission, shoppingListCreateActionsPermission } =
@@ -181,6 +183,7 @@ export default function App() {
     // effect for the identity it's already handling; skip that self-retrigger.
     if (isInitializing.current || initializedCustomerId.current === customerId) return;
     isInitializing.current = true;
+    setStorefrontIdentityReady(false);
 
     const init = async () => {
       const { completed, resolvedCustomerId } = await initializeApp({
@@ -196,6 +199,7 @@ export default function App() {
         styleDispatch,
         storeDispatch,
       });
+      setStorefrontIdentityReady(Boolean(completed && resolvedCustomerId));
       isInitializing.current = false;
       initializedCustomerId.current = completed ? (resolvedCustomerId ?? null) : null;
     };
@@ -377,6 +381,7 @@ export default function App() {
         setOpenPage={setOpenPage}
       />
       <HeadlessController setOpenPage={setOpenPage} />
+      <DealerStorefrontWelcome ready={storefrontIdentityReady} />
       <B3GlobalTip />
       <GlobalDialog />
     </>
