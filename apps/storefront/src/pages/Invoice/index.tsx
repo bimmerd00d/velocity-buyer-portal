@@ -812,14 +812,15 @@ function Invoice() {
   });
 
   return (
-    <B3Spin isSpinning={isRequestLoading}>
+    <B3Spin isSpinning={isRequestLoading} isFlex={false} spinningHeight="auto">
       <CompanyCreditSummary />
       <Box
         sx={{
           overflowX: 'auto',
           display: 'flex',
           flexDirection: 'column',
-          flex: 1,
+          width: '100%',
+          minWidth: 0,
           position: 'relative',
         }}
       >
