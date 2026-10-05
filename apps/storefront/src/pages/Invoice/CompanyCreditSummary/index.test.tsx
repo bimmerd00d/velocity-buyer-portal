@@ -112,11 +112,21 @@ describe('company credit summary', () => {
     expect(screen.getAllByText('$6,450.00')).toHaveLength(2);
     expect(getInvoiceList).toHaveBeenNthCalledWith(
       1,
-      expect.objectContaining({ companyIds: [42], offset: 0 }),
+      expect.objectContaining({
+        companyIds: [42],
+        offset: 0,
+        first: 50,
+        orderBy: '-invoice_number',
+      }),
     );
     expect(getInvoiceList).toHaveBeenNthCalledWith(
       2,
-      expect.objectContaining({ companyIds: [42], offset: 1 }),
+      expect.objectContaining({
+        companyIds: [42],
+        offset: 1,
+        first: 50,
+        orderBy: '-invoice_number',
+      }),
     );
   });
 

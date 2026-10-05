@@ -22,7 +22,7 @@ interface CreditConfig {
   creditCurrency?: string | null;
 }
 
-const PAGE_SIZE = 100;
+const PAGE_SIZE = 50;
 
 async function readCreditConfig(isAgenting: boolean): Promise<CreditConfig> {
   // Read the same fields as the shared service, adding the agent flag and suppressing disabled-store snackbars.
@@ -65,7 +65,7 @@ async function readAllInvoices(
       q: '',
       first: PAGE_SIZE,
       offset,
-      orderBy: '-id',
+      orderBy: '-invoice_number',
       companyIds: [companyId],
     }),
   );

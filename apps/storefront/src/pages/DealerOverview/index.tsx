@@ -10,6 +10,8 @@ import { useAppSelector } from '@/store';
 
 import CompanyCreditSummary from '../Invoice/CompanyCreditSummary';
 
+import SalesRepresentative from './SalesRepresentative';
+
 interface RecentOrders {
   totalCount: number;
   edges: CustomerOrderNode[];
@@ -17,6 +19,7 @@ interface RecentOrders {
 
 export default function DealerOverview() {
   const { state } = useContext(GlobalContext);
+  const token = useAppSelector(({ company }) => company.tokens.B2BToken);
   const customer = useAppSelector(({ company }) => company.customer);
   const company = useAppSelector(({ company: account }) => account.companyInfo);
   const permissions = useAppSelector(({ company: account }) => account.permissions);
@@ -135,6 +138,7 @@ export default function DealerOverview() {
           ))}
         </section>
       )}
+      <SalesRepresentative companyId={String(companyId || '')} token={token} />
       <section className="dealer-overview-resources">
         <div>
           <h2>Ready for the next installation?</h2>
