@@ -381,7 +381,10 @@ export default function App() {
         setOpenPage={setOpenPage}
       />
       <HeadlessController setOpenPage={setOpenPage} />
-      <DealerStorefrontWelcome ready={storefrontIdentityReady} />
+      <DealerStorefrontWelcome
+        ready={storefrontIdentityReady}
+        onViewInvoices={() => gotoPage('/invoice')}
+      />
       <B3GlobalTip />
       <GlobalDialog />
     </>

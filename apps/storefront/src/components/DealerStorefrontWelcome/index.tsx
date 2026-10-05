@@ -12,11 +12,13 @@ export function DealerWelcomeMount({
   name,
   identity,
   canViewInvoices = false,
+  onViewInvoices,
 }: {
   enabled: boolean;
   name: string;
   identity: ReactNode;
   canViewInvoices?: boolean;
+  onViewInvoices?: () => void;
 }) {
   const [target, setTarget] = useState<HTMLElement | null>(null);
 
@@ -72,10 +74,10 @@ export function DealerWelcomeMount({
                 Signed in as <strong>{name || 'a company buyer'}</strong>
               </span>
             </span>
-            {canViewInvoices && (
-              <a href="/account.php#/invoice" className="dealer-welcome-invoices">
+            {canViewInvoices && onViewInvoices && (
+              <button type="button" onClick={onViewInvoices} className="dealer-welcome-invoices">
                 View invoices
-              </a>
+              </button>
             )}
           </div>
         </div>
@@ -85,7 +87,13 @@ export function DealerWelcomeMount({
   );
 }
 
-export default function DealerStorefrontWelcome({ ready }: { ready: boolean }) {
+export default function DealerStorefrontWelcome({
+  ready,
+  onViewInvoices,
+}: {
+  ready: boolean;
+  onViewInvoices: () => void;
+}) {
   const customer = useAppSelector(({ company }) => company.customer);
   const token = useAppSelector(({ company }) => company.tokens.B2BToken);
   const isB2BUser = useAppSelector(isB2BUserSelector);
@@ -102,6 +110,7 @@ export default function DealerStorefrontWelcome({ ready }: { ready: boolean }) {
       name={name}
       identity={<CompanyIdentity />}
       canViewInvoices={canViewInvoices}
+      onViewInvoices={onViewInvoices}
     />
   );
 }

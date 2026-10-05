@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { faker } from 'tests/test-utils';
 
 import { CompanyIdentityCard } from '@/components/layout/CompanyIdentity';
@@ -28,10 +28,12 @@ afterEach(() => {
 it('adds the authenticated buyer and company logo to the storefront workspace', () => {
   const name = faker.person.fullName();
   const companyName = faker.company.name();
+  const openInvoices = vi.fn();
   render(
     <DealerWelcomeMount
       enabled
       canViewInvoices
+      onViewInvoices={openInvoices}
       name={name}
       identity={
         <CompanyIdentityCard
@@ -44,10 +46,8 @@ it('adds the authenticated buyer and company logo to the storefront workspace', 
   );
   expect(screen.getByRole('heading', { name: `Welcome back, ${name}.` })).toBeVisible();
   expect(screen.getByRole('img', { name: `${companyName} logo` })).toBeVisible();
-  expect(screen.getByRole('link', { name: 'View invoices' })).toHaveAttribute(
-    'href',
-    '/account.php#/invoice',
-  );
+  fireEvent.click(screen.getByRole('button', { name: 'View invoices' }));
+  expect(openInvoices).toHaveBeenCalledOnce();
   expect(original).not.toBeVisible();
 });
 
@@ -84,5 +84,5 @@ it('updates the buyer name when the current identity changes', () => {
 
 it('omits the invoice shortcut when the buyer lacks access', () => {
   render(<DealerWelcomeMount enabled name={faker.person.fullName()} identity={null} />);
-  expect(screen.queryByRole('link', { name: 'View invoices' })).not.toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: 'View invoices' })).not.toBeInTheDocument();
 });

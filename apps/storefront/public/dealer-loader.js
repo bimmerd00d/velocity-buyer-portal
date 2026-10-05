@@ -27,7 +27,7 @@
   script.id = 'velocity-buyer-portal';
   script.type = 'module';
   script.crossOrigin = 'anonymous';
-  script.integrity = 'sha384-OITRjCyaI31QKItZaNAWyrVz/gJnm2tPtT1gU8V4fX00z6ddVTv6goS6UmwAjtkC';
+  script.integrity = 'sha384-T/0G47twLnihre3AtjB3w6b/wgiFlsADVF0LedE7mMjkUp33BySZfg3ZGlKO2lo6';
   script.src = 'https://velocity-buyer-portal.vercel.app/index.js';
   document.body.append(script);
 })();
