@@ -40,3 +40,14 @@ Restore previous Elevate theme `c161c760-e5de-013b-509c-32be06899b7d`, configura
 Build locally with the production public environment variables before publishing. Regenerate the index.js SHA-384 in public/dealer-loader.js. Add the new loader SHA-384 alongside the previous one in the BigCommerce script integrity_hashes before deploying; otherwise the browser blocks the release. Push to main to trigger Vercel, then verify remote loader and index hashes match. Keep the previous deployment and integrity hash for rollback. Never put management credentials in VITE variables.
 
 The fork needs reviewed upstream updates; it no longer receives BigCommerce hosted-portal changes automatically.
+
+## Demo visibility and crawler controls
+
+The Vercel project serves a disallow-all `robots.txt` and sends `X-Robots-Tag: noindex, nofollow, noarchive` on every path. These settings keep the embedded JavaScript accessible to the Dealer storefront. The signed-in desktop and mobile account layouts show the demo notice through `B3DemoNotice`.
+
+Current production integrity values (computed from bytes on October 4, 2026):
+
+- `/index.js`: `sha384-GUSS7wPE3HDREyDt3dQWN0ZFgOSqzKQWxe3LhmDeAQEC3Wdn7SCL/o1t1VPJoClZ`
+- `/dealer-loader.js`: `sha384-E1FHT0T9NP1PH/uXuwM8ZmPVyiYfq8YsKvjCS+OV46x6/JMjenXI8b4niHIZwx+D`
+
+Before publishing a changed `index.js`, compute its SHA-384 Base64 digest from the built file, put that exact value in `apps/storefront/public/dealer-loader.js`, then compute the loader digest. Add the new loader digest to the channel 1 Script Manager entry `eae572a2-6f94-408b-b791-6fdcc420c929` before pushing the portal. Retain the previous digest for rollback. Check both hosted assets against the built bytes and verify the Dealer account opens after deployment. The dated hash audit is in the Velocity theme project at `docs/demo-protection/buyer-portal-verified-hashes.json`.
