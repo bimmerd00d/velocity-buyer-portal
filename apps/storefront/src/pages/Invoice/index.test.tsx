@@ -940,7 +940,7 @@ it('navigates to the order details page when clicking on the order number', asyn
   expect(navigation).toHaveBeenCalledWith('/orderDetail/4444');
 });
 
-it('shows the current open/overdue values at the header', async () => {
+it('omits the redundant open/overdue totals from the invoice toolbar', async () => {
   server.use(
     graphql.query('GetInvoices', () =>
       HttpResponse.json(buildInvoicesResponseWith('WHATEVER_VALUES')),
@@ -961,11 +961,10 @@ it('shows the current open/overdue values at the header', async () => {
 
   renderWithProviders(<Invoice />, { preloadedState });
 
-  const openBalance = await screen.findByText('Open: $1,000.00');
-  const overdueBalance = await screen.findByText('Overdue: $200.00');
+  await waitForElementToBeRemoved(() => screen.queryByText(/loading/i));
 
-  expect(openBalance).toBeInTheDocument();
-  expect(overdueBalance).toBeInTheDocument();
+  expect(screen.queryByText(/^Open:/)).not.toBeInTheDocument();
+  expect(screen.queryByText(/^Overdue:/)).not.toBeInTheDocument();
 });
 
 const buildInvoicePaymentNodeWith = builder(() => ({

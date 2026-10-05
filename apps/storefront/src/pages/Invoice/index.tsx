@@ -12,13 +12,13 @@ import { useMobile } from '@/hooks/useMobile';
 import { useSort } from '@/hooks/useSort';
 import { useB3Lang } from '@/lib/lang';
 import { GlobalContext } from '@/shared/global';
-import { exportInvoicesAsCSV, getInvoiceList, getInvoiceStats } from '@/shared/service/b2b';
+import { exportInvoicesAsCSV, getInvoiceList } from '@/shared/service/b2b';
 import { rolePermissionSelector, useAppSelector } from '@/store';
 import { CustomerRole } from '@/types';
 import { InvoiceList, InvoiceListNode } from '@/types/invoice';
 import { validatePermissionWithComparisonType } from '@/utils/b3CheckPermissions/check';
 import { b2bPermissionsMap } from '@/utils/b3CheckPermissions/config';
-import { currencyFormat, currencyFormatInfo } from '@/utils/b3CurrencyFormat';
+import { currencyFormatInfo } from '@/utils/b3CurrencyFormat';
 import { dateWithLocaleSupport, getUTCTimestamp } from '@/utils/b3DateFormat';
 import b2bLogger from '@/utils/b3Logger';
 import { snackbar } from '@/utils/b3Tip';
@@ -124,8 +124,6 @@ function Invoice() {
   const [currentInvoiceId, setCurrentInvoiceId] = useState<string>('');
   const [receiptId, setReceiptId] = useState<string>('');
   const [type, setType] = useState<string>('');
-  const [unpaidAmount, setUnpaidAmount] = useState<number>(0);
-  const [overdueAmount, setOverdueAmount] = useState<number>(0);
   const [checkedArr, setCheckedArr] = useState<CustomFieldItems | InvoiceListNode[]>([]);
   const [selectedPay, setSelectedPay] = useState<CustomFieldItems | InvoiceListNode[]>([]);
   const [list, setList] = useState<InvoiceListNode[]>([]);
@@ -185,27 +183,6 @@ function Invoice() {
     });
 
     setFilterLists(copyCacheFilterList);
-  };
-
-  const handleStatisticsInvoiceAmount = async () => {
-    try {
-      setIsRequestLoading(true);
-      const { invoiceStats } = await getInvoiceStats(
-        filterData?.status ? Number(filterData.status) : 0,
-        Number(decimalPlaces),
-        filterData?.companyIds || [],
-      );
-
-      if (invoiceStats) {
-        const { overDueBalance, totalBalance } = invoiceStats;
-        setUnpaidAmount(Number(formattingNumericValues(Number(totalBalance), decimalPlaces)));
-        setOverdueAmount(Number(formattingNumericValues(Number(overDueBalance), decimalPlaces)));
-      }
-    } catch (err) {
-      b2bLogger.error(err);
-    } finally {
-      setIsRequestLoading(false);
-    }
   };
 
   const handleChange = (key: string, value: string) => {
@@ -509,7 +486,6 @@ function Invoice() {
       }
     });
     setList(invoicesList);
-    handleStatisticsInvoiceAmount();
 
     if (filterData && isFiltering(filterData) && invoicesList.length) {
       cacheFilterLists(invoicesList);
@@ -881,44 +857,6 @@ function Invoice() {
               pcContainerWidth="36rem"
               pcSearchContainerWidth="80%"
             />
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              marginBottom: '30px',
-              flexDirection: document.body.clientWidth <= 465 ? 'column' : 'row',
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: '24px',
-                color: '#000000',
-              }}
-            >
-              {b3Lang('invoice.openUnpaid', {
-                unpaid: currencyFormat(unpaidAmount),
-              })}
-            </Typography>
-            {document.body.clientWidth >= 465 && (
-              <Typography
-                sx={{
-                  fontSize: '24px',
-                  margin: '0 8px',
-                }}
-              >
-                |
-              </Typography>
-            )}
-            <Typography
-              sx={{
-                fontSize: '24px',
-                color: '#D32F2F',
-              }}
-            >
-              {b3Lang('invoice.overdueAmount', {
-                overdue: currencyFormat(overdueAmount),
-              })}
-            </Typography>
           </Box>
         </Box>
         <B3PaginationTable
