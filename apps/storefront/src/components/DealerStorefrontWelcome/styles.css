@@ -8,7 +8,6 @@
 .dealer-welcome-copy{min-width:0}
 .dealer-welcome-panel .dealer-welcome-label{margin:0 0 10px;color:#83dce5;font:600 13px/1.4 Barlow,Arial,sans-serif}
 .dealer-home .dealer-welcome-panel h1{margin:0 0 12px;color:#fff;font:600 clamp(34px,3.6vw,52px)/1.08 'Barlow Condensed',Arial,sans-serif;overflow-wrap:anywhere}
-.dealer-welcome-panel .dealer-welcome-description{margin:0;color:#d1dfe5;font:400 16px/1.5 Barlow,Arial,sans-serif}
 .dealer-welcome-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;margin-top:24px;padding-top:20px;border-top:1px solid #39515e}
 .dealer-welcome-user{display:flex;align-items:center;gap:10px;font:400 13px/1.4 Barlow,Arial,sans-serif;color:#d1dfe5}
 .dealer-welcome-user strong{color:#fff;font-weight:600}
@@ -17,4 +16,4 @@
 .dealer-welcome-invoices:hover{background:#274350;border-color:#83dce5;color:#fff}
 .dealer-welcome-invoices:focus-visible{outline:3px solid #83dce5;outline-offset:4px}
 @media(max-width:700px){.dealer-welcome-panel{grid-template-columns:140px minmax(0,1fr);gap:22px;padding:24px}.dealer-welcome-logo{padding:18px 12px}.dealer-welcome-logo img{height:64px}.dealer-welcome-bottom{align-items:flex-start}.dealer-welcome-user>span:last-child{max-width:170px}}
-@media(max-width:500px){.dealer-welcome-panel{grid-template-columns:1fr;gap:22px;padding:24px 20px}.dealer-welcome-logo{width:170px}.dealer-welcome-logo .dealer-company-caption{margin-top:12px;padding-top:10px}.dealer-welcome-panel .dealer-welcome-description{font-size:15px}.dealer-welcome-bottom{gap:16px}.dealer-welcome-invoices{width:100%;justify-content:center}.dealer-welcome-user>span:last-child{max-width:none}}
+@media(max-width:500px){.dealer-welcome-panel{grid-template-columns:1fr;gap:22px;padding:24px 20px}.dealer-welcome-logo{width:170px}.dealer-welcome-logo .dealer-company-caption{margin-top:12px;padding-top:10px}.dealer-welcome-bottom{gap:16px}.dealer-welcome-invoices{width:100%;justify-content:center}.dealer-welcome-user>span:last-child{max-width:none}}

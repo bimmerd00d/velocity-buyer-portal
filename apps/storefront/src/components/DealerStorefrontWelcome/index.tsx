@@ -64,7 +64,6 @@ export function DealerWelcomeMount({
         <div className="dealer-welcome-copy">
           <p className="dealer-welcome-label">Your dealer workspace</p>
           <h1>Welcome back{name ? `, ${name}` : ''}.</h1>
-          <p className="dealer-welcome-description">Keep the parts, people and paperwork moving.</p>
           <div className="dealer-welcome-bottom">
             <span className="dealer-welcome-user">
               <span className="dealer-welcome-initials" aria-hidden="true">
