@@ -12,6 +12,7 @@ import B3Dialog from '../B3Dialog';
 import CompanyCredit from '../CompanyCredit';
 
 import B3CloseAppButton from './B3CloseAppButton';
+import B3DemoNotice from './B3DemoNotice';
 import B3Logo from './B3Logo';
 import B3MainHeader from './B3MainHeader';
 import B3MobileLayout from './B3MobileLayout';
@@ -133,6 +134,7 @@ export default function B3Layout({ children }: { children: ReactNode }) {
               <Box component="main">{children}</Box>
             </Box>
           </Box>
+          <B3DemoNotice />
         </Box>
       )}
 

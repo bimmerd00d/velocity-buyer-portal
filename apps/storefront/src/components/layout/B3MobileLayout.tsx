@@ -11,6 +11,7 @@ import { getContrastColor } from '../outSideComponents/utils/b3CustomStyles';
 
 import B3AccountInfo from './B3AccountInfo';
 import B3CloseAppButton from './B3CloseAppButton';
+import B3DemoNotice from './B3DemoNotice';
 import B3Logo from './B3Logo';
 import B3Nav from './B3Nav';
 import CompanyIdentity from './CompanyIdentity';
@@ -140,6 +141,7 @@ export default function B3MobileLayout({
       >
         {children}
       </Box>
+      <B3DemoNotice />
       {isOpenMobileSidebar && (
         <Box
           className="dealer-account-mobile-drawer"

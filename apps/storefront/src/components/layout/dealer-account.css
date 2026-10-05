@@ -1,5 +1,5 @@
 /* Velocity Dealer account shell. Business components retain their native behavior. */
-.dealer-account { min-height:100vh; color:#18242e; background:#f3f5f5; }
+.dealer-account { min-height:100vh; display:flex; flex-direction:column; color:#18242e; background:#f3f5f5; }
 .dealer-account-header { background:#14212b; border-bottom:3px solid #83dce5; }
 .dealer-account-masthead { max-width:1280px; margin:auto; padding:20px 32px; display:flex; align-items:center; gap:32px; position:relative; }
 .dealer-account-masthead > :first-child { flex-shrink:0; }
@@ -11,7 +11,8 @@
 .dealer-account-header-content #cart-number-icon { background:#83dce5; color:#14212b; }
 .dealer-account-masthead > :last-child { position:static; align-self:center; }
 .dealer-account-masthead > :last-child svg { color:#b7cbd4; }
-.dealer-account-body { max-width:1280px; margin:auto; display:grid; grid-template-columns:230px minmax(0,1fr); gap:40px; padding:40px 32px 72px; }
+.dealer-account-body { width:100%; box-sizing:border-box; flex:1; max-width:1280px; margin:0 auto; display:grid; grid-template-columns:230px minmax(0,1fr); gap:40px; padding:40px 32px 72px; }
+.dealer-account-demo-notice { width:100%; box-sizing:border-box; max-width:1280px; margin:0 auto; padding:18px 32px 24px; border-top:1px solid #d6dee2; color:#60707b; font:400 12px/1.5 Barlow,Arial,sans-serif; text-align:center; }
 .dealer-account-sidebar { border-right:1px solid #d6dee2; padding-right:24px; }
 .dealer-account-eyebrow { font:600 12px/1.5 Barlow,Arial,sans-serif; color:#60707b; margin:0 0 18px 16px; letter-spacing:.08em; text-transform:uppercase; }
 .dealer-account .dealer-account-nav { background:transparent; color:#3c535f; }
@@ -34,6 +35,7 @@
 .dealer-account-mobile-header .MuiSvgIcon-root { color:#d9edf0!important; }
 .dealer-account-mobile-header .MuiBadge-badge { background:#83dce5!important; color:#14212b!important; }
 .dealer-account-mobile .dealer-account-title { font-size:36px; margin-bottom:24px; }
+.dealer-account-mobile .dealer-account-demo-notice { padding:18px 0 8px; margin-top:28px; }
 .dealer-account-mobile-drawer { overflow-y:auto; box-sizing:border-box; background:#f3f5f5!important; border-right:3px solid #83dce5; }
 @media(min-width:769px) and (max-width:1000px) { .dealer-account-body { gap:24px; grid-template-columns:200px minmax(0,1fr); padding-inline:24px; } .dealer-account-masthead { gap:16px; padding-inline:24px; } }
 @media print { .dealer-account-header { display:none; } .dealer-account-body { display:block; padding:0; } }
