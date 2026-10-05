@@ -41,6 +41,7 @@ import InvoiceListType, {
 import { currencyAdornmentProps } from './utils/currencyAdornment';
 import { formatInvoiceBalanceAmount, formattingNumericValues } from './utils/payment';
 import { handlePrintPDF } from './utils/pdf';
+import CompanyCreditSummary from './CompanyCreditSummary';
 import { InvoiceItemCard } from './InvoiceItemCard';
 
 interface FilterSearchProps {
@@ -812,6 +813,7 @@ function Invoice() {
 
   return (
     <B3Spin isSpinning={isRequestLoading}>
+      <CompanyCreditSummary />
       <Box
         sx={{
           overflowX: 'auto',

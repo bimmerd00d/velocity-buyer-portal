@@ -14,6 +14,9 @@ import HeadlessController from '@/HeadlessController';
 import useDomHooks from '@/hooks/dom/useDomHooks';
 import { useB3AppOpen } from '@/hooks/useB3AppOpen';
 import { useSetOpen } from '@/hooks/useSetOpen';
+import dealerOverviewStyles from '@/pages/DealerOverview/styles.css?raw';
+import dealerResourceStyles from '@/pages/DealerResources/styles.css?raw';
+import dealerCreditStyles from '@/pages/Invoice/CompanyCreditSummary/style.css?raw';
 import { CustomStyleContext } from '@/shared/customStyleButton';
 import { GlobalContext } from '@/shared/global';
 import { openPageByClick, removeBCMenus } from '@/utils/b3AccountItem';
@@ -110,6 +113,9 @@ export default function App() {
   .MuiPaper-root { border-color: #d6dee2; }
   @media (max-width: 600px) { h1 { font-size: 34px; } }
   ${dealerAccountStyles}
+  ${dealerOverviewStyles}
+  ${dealerResourceStyles}
+  ${dealerCreditStyles}
   `;
 
   const [customStyles, setCustomStyle] = useState<string>(CUSTOM_STYLES);

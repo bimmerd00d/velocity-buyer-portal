@@ -59,7 +59,7 @@ export default function B3Layout({ children }: { children: ReactNode }) {
       if (foundPath) {
         setTitle(b3Lang(foundPath[1]));
       } else {
-        setTitle(b3Lang(itemsRoutes.idLang));
+        setTitle(itemsRoutes.pageTitle || b3Lang(itemsRoutes.idLang));
       }
     } else {
       setTitle('');

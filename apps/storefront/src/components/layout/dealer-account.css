@@ -48,3 +48,31 @@
 .dealer-account-mobile .dealer-company-identity img { width:150px; height:46px; }
 
 .dealer-account-header-content .dealer-account-user { color:#fff; }
+
+/* Account identity and navigation approved in the Dealer capability preview. */
+.dealer-account-user .dealer-user-trigger{display:flex;gap:12px;align-items:center;text-align:left;text-transform:none;background:#223642!important;border:1px solid #617e8c;border-radius:5px;padding:7px 13px 7px 8px;min-height:52px;max-width:320px;color:#fff!important;line-height:1.25;white-space:normal}
+.dealer-account-user .dealer-user-trigger:hover{background:#2d4654!important;border-color:#83dce5}
+.dealer-account-user .dealer-user-trigger:focus-visible{outline:3px solid #83dce5;outline-offset:3px}
+.dealer-user-initials{display:grid;place-items:center;min-width:36px;height:36px;border-radius:4px;background:#83dce5;color:#14212b!important;font:600 14px Barlow,Arial,sans-serif}
+.dealer-user-label{display:flex;flex-direction:column;min-width:0;gap:3px;color:#fff;font:600 15px/1.25 Barlow,Arial,sans-serif;overflow-wrap:anywhere}
+.dealer-user-label small{color:#d0e4e9;font-size:11px;font-weight:400}
+.dealer-account-user .MuiButton-endIcon{color:#83dce5;margin-left:0}
+.dealer-company-identity{border-color:#a4bbc5;border-radius:6px;box-shadow:0 2px 5px #14212b06;padding:18px 14px}
+.dealer-company-identity .dealer-company-caption{border-top:1px solid #e1e8eb;padding-top:10px;margin-top:14px;color:#4e6672}
+.dealer-account-sidebar{border-right:0}
+.dealer-account-nav .MuiListItem-root{margin-bottom:7px}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root{position:relative;isolation:isolate;overflow:hidden;min-height:46px;border:1px solid #b8c9d1;border-radius:5px!important;background:#fff;color:#3c535f;padding:8px 15px;transition:color 180ms ease,border-color 180ms ease,box-shadow 220ms ease}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root::before,.dealer-account-nav .MuiListItem-root .MuiButtonBase-root::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity 220ms ease}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root::before{background:linear-gradient(105deg,#daf0f2,#edf6f7 60%,#fff)}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root::after{background:linear-gradient(105deg,#18343f,#14212b 65%,#224a55)}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root:hover:not(.Mui-selected){background:#fff;border-color:#72adb7;box-shadow:0 2px 8px #17657312}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root:hover::before,.dealer-account-nav .MuiListItem-root .MuiButtonBase-root:focus-visible::before{opacity:1}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root.Mui-selected{background:#14212b!important;border:1px solid #407785;border-left:3px solid #83dce5;padding-left:13px;color:white!important;box-shadow:0 0 0 1px #83dce514,0 3px 12px #17657318}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root.Mui-selected::after{opacity:1}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root.Mui-selected:hover{border-color:#83dce5;box-shadow:0 0 0 1px #83dce526,0 3px 14px #17657326}
+.dealer-account-nav .MuiListItem-root .MuiButtonBase-root:focus-visible{outline:3px solid #16818e;outline-offset:2px}
+.dealer-account .MuiOutlinedInput-notchedOutline{border-color:#a4bbc5}
+.dealer-account .MuiPaper-root{border-color:#b8c9d1}
+.dealer-account-mobile .dealer-company-caption{border:0;padding:0;margin:0}
+.dealer-account-mobile main{width:100%}
+@media(prefers-reduced-motion:reduce){.dealer-account-nav .MuiListItem-root .MuiButtonBase-root,.dealer-account-nav .MuiListItem-root .MuiButtonBase-root::before,.dealer-account-nav .MuiListItem-root .MuiButtonBase-root::after{transition:none}}

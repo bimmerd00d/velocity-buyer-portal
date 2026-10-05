@@ -235,8 +235,12 @@ export default function B3Nav({ closeSidebar }: B3NavProps) {
                   },
                 }}
               >
-                <ListItemButton onClick={() => handleClick(item)} selected={activePath(item.path)}>
-                  <ListItemText primary={b3Lang(item.idLang)} />
+                <ListItemButton
+                  onClick={() => handleClick(item)}
+                  selected={activePath(item.path)}
+                  aria-current={activePath(item.path) ? 'page' : undefined}
+                >
+                  <ListItemText primary={item.pageTitle || b3Lang(item.idLang)} />
                 </ListItemButton>
               </Badge>
             </ListItem>
@@ -244,8 +248,12 @@ export default function B3Nav({ closeSidebar }: B3NavProps) {
         }
         return (
           <ListItem key={item.path} disablePadding>
-            <ListItemButton onClick={() => handleClick(item)} selected={activePath(item.path)}>
-              <ListItemText primary={b3Lang(item.idLang)} />
+            <ListItemButton
+              onClick={() => handleClick(item)}
+              selected={activePath(item.path)}
+              aria-current={activePath(item.path) ? 'page' : undefined}
+            >
+              <ListItemText primary={item.pageTitle || b3Lang(item.idLang)} />
             </ListItemButton>
           </ListItem>
         );

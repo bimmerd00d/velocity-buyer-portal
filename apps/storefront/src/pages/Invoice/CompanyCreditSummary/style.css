@@ -1,0 +1,82 @@
+.dealer-credit-summary {
+  margin: 0 0 24px;
+  padding: 20px 22px;
+  border: 1px solid #b8c9d1;
+  border-radius: 6px;
+  background: #fff;
+  color: #18242e;
+}
+
+.dealer-credit-summary h2 {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.dealer-credit-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dealer-credit-metric {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #d6e1e5;
+  border-radius: 5px;
+}
+
+.dealer-credit-metric span,
+.dealer-credit-metric small {
+  display: block;
+  color: #526773;
+}
+
+.dealer-credit-metric span { font-size: 13px; }
+.dealer-credit-metric small { font-size: 12px; }
+.dealer-credit-metric strong {
+  display: block;
+  margin: 6px 0;
+  font-size: 27px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.dealer-credit-remaining { border-top: 3px solid #176573; }
+.dealer-credit-remaining strong { color: #176573; }
+
+.dealer-credit-bar {
+  height: 10px;
+  margin: 17px 0 9px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e4ecef;
+}
+
+.dealer-credit-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #176573;
+}
+
+.dealer-credit-note,
+.dealer-credit-state {
+  margin: 10px 0 0;
+  color: #526773;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.dealer-credit-compact .dealer-credit-metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 800px) {
+  .dealer-credit-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .dealer-credit-metrics,
+  .dealer-credit-compact .dealer-credit-metrics { grid-template-columns: 1fr; }
+}

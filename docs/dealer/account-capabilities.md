@@ -1,0 +1,11 @@
+# Dealer account capabilities — October 5, 2026
+
+Approved release: initials identity badge; framed company logo; bordered navigation with cyan hover fades; Account overview; Dealer resources; informational company credit summary above the native invoice tools.
+
+Overview reads the authenticated buyer's recent orders and open quotes. Route permissions govern visible tools; query caches are scoped by buyer/company. Dealer resources contains six examples with real printable guides, a worksheet, and a brand ZIP. Existing order, invoice, quote, shopping-list, and payment flows are preserved. No sample financial records are overlaid on real account pages.
+
+Credit summary uses the B2B company's configured availableCredit amount as a per-order ceiling and subtracts all matching-currency unpaid invoice balances for display. It does not alter checkout authorization or automatically adjust company settings. Company-level invoice permission is required, subsidiary selection is excluded, masquerade reads use the represented company, and missing/mismatched data is unavailable rather than zero. Global company credit was disabled at release (`Store company credit is not enabled`); the summary stays hidden until enabled and configured. BigCommerce B2B Settings > General > Enable company credit features, then configure each company's payments credit setting. Admin browser session was signed out, so no credit settings were changed.
+
+All account CSS is injected into the portal iframe via App.tsx raw styles, matching the existing Dealer theme integration. Do not use standalone CSS imports for future account pages without ensuring iframe injection.
+
+Validation: full TypeScript/build/lint (dependency rules, ESLint, unused code); 74 tests pass, 2 pre-existing todo cases. Candidate signed-in test: Apex user Marcus shows Order 107 / $127.94, correct company identity, working account dropdown, new menu routes, and original paid invoice. No browser runtime errors. Production deployment requires matching the built index SHA-384 in public/dealer-loader.js and adding the exact loader SHA-384 to Dealer Script Manager before publishing. Preserve previous deployment and integrity hash for rollback. See main Velocity docs/dealer/account-capabilities-release for API snapshots and live validation evidence.

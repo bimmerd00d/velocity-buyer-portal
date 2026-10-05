@@ -21,6 +21,9 @@ import {
 
 import { allLegacyPermission, denyInvoiceRoles } from './config';
 
+const DealerOverview = lazy(() => import('@/pages/DealerOverview'));
+const DealerResources = lazy(() => import('@/pages/DealerResources'));
+
 const AccountSetting = lazy(() => import('@/pages/AccountSetting'));
 const AddressList = lazy(() => import('@/pages/AddressList'));
 const CompanyOrderList = lazy(() => import('@/pages/CompanyOrderList'));
@@ -46,6 +49,8 @@ const CompanyHierarchy = lazy(() => import('@/pages/CompanyHierarchy'));
 
 const routesMap: Record<string, LazyExoticComponent<(props: PageProps) => ReactElement>> = {
   '/dashboard': Dashboard,
+  '/account-overview': DealerOverview,
+  '/dealer-resources': DealerResources,
   '/orders': MyOrders,
   '/company-orders': CompanyOrderList,
   '/invoice': Invoice,
