@@ -41,7 +41,7 @@
       ]
     },
     {
-      "source": "/dealer-resources/parts-planning.csv",
+      "source": "/dealer-resources/resources/parts-planning.csv",
       "headers": [
         {
           "key": "Content-Disposition",
