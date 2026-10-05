@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import handler from './company-sales-reps.mjs';
+import handler from '../api/company-sales-reps.mjs';
 
 function invoke({ method = 'GET', authorization = 'Bearer buyer', companyId = '123' } = {}) {
   const result = { headers: {} };
